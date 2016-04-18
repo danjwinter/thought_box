@@ -19,12 +19,10 @@ class LinksController < ApplicationController
   end
 
   def edit
-    binding.pry
     @link = current_user.links.find_by(id: params[:id])
   end
 
   def update
-    # binding.pry
     @link = current_user.links.find_by(id: params[:id])
 
     @link.update_attributes(link_params)
