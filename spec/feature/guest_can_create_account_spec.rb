@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Guest is redirected to log in", type: :feature do
+RSpec.feature "Guest can log in or sign up", type: :feature do
   scenario "when they visit the root path, they are prompted to log in" do
     visit root_path
 
@@ -17,7 +17,7 @@ RSpec.feature "Guest is redirected to log in", type: :feature do
     expect(page).to have_content "Username"
     expect(page).to have_content "Password"
 
-    fill_in "Username", with: "Bob"
+    fill_in "Username", with: "Gob"
     fill_in "Password", with: "pass"
     fill_in "Password confirmation", with: "pass"
     click_on "Create Account"

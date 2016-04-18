@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "/sign_up", to: "users#new"
   resources :users, only: [:new, :create]
   resources :links, only: [:index]
+  post "/login", to: "sessions#create"
 end
