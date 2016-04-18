@@ -13,6 +13,16 @@
   <% end %>
 </div>
 <br>
+<button class="filter-by-unread">
+  Filter by Unread
+</button>
+<button class="filter-by-read">
+  Filter by Read
+</button>
+<button class="show-all">
+  Show All
+</button>
+
 <div class="links">
   <% @links.each do |link| %>
     <% if link.valid? %>

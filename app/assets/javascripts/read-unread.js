@@ -36,25 +36,62 @@ $(document).ready(() => {
     });
   });
 searchForLink();
-
+filterByReadStatus();
+filterByUnReadStatus();
+showAll();
 });
 
 var searchForLink = function(){
-$('#search').on('keyup', function(e){
-  e.preventDefault();
+  $('#search').on('keyup', function(e){
+    e.preventDefault();
 
-  var query = $(this).val();
-  var links = $('.link');
-  $.each(links, function(index, link){
-    showIdeasMatchingQuery(link, query)
-  })
-})
-}
+    var query = $(this).val();
+    var links = $('.link');
+    $.each(links, function(index, link){
+      showIdeasMatchingQuery(link, query);
+    });
+  });
+};
 
 var showIdeasMatchingQuery = function(link, query) {
-var title = $(link).find('.title').text()
-var url = $(link).find('.url').text()
+  var title = $(link).find('.title').text();
+  var url = $(link).find('.url').text();
 
-var matchesSearchTerm = title.includes(query) || url.includes(query)
-$(link).toggle(matchesSearchTerm)
-}
+  var matchesSearchTerm = title.includes(query) || url.includes(query);
+  $(link).toggle(matchesSearchTerm);
+};
+
+var filterByReadStatus = function() {
+  $('.filter-by-read').on('click', (e) => {
+
+    var links = $('.link');
+
+    $.each(links, (index, link) => {
+      var readStatus = $(link).find('.read-status').text();
+      var matchesSearchTerm = readStatus.includes("Read: true");
+      $(link).toggle(matchesSearchTerm);
+    });
+  });
+};
+
+var filterByUnReadStatus = function() {
+  $('.filter-by-unread').on('click', (e) => {
+    var links = $('.link');
+
+    $.each(links, (index, link) => {
+      var readStatus = $(link).find('.read-status').text();
+      var matchesSearchTerm = readStatus.includes("Read: false");
+      $(link).toggle(matchesSearchTerm);
+    });
+  });
+};
+
+var showAll = function() {
+  $('.show-all').on('click', (e) => {
+    var links = $('.link');
+
+    $.each(links, (index, link) => {
+      $(link).show()
+    });
+  });
+};
