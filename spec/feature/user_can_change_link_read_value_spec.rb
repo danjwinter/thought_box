@@ -13,6 +13,7 @@ RSpec.feature "Authenticated user views links" do
 
     within(".links") do
       expect(page).to have_content "Mark as Read"
+      expect(page).to have_css ".unread-link"
       click_on "Mark as Read"
     end
 
@@ -23,6 +24,7 @@ RSpec.feature "Authenticated user views links" do
     within(".links") do
       expect(page).to have_content "Read: true"
       expect(page).to have_content "Mark as Unread"
+      expect(page).to have_css ".read-link"
       click_on "Mark as Unread"
     end
 
