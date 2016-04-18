@@ -11,7 +11,6 @@ class LinksController < ApplicationController
   def create
     @link = current_user.links.new(link_params)
     if @link.save
-      binding.pry
       redirect_to link_path(@link)
     else
       @links = current_user.links
