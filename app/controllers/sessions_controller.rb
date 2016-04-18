@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
 
-  def create
+  def new
   end
 end
