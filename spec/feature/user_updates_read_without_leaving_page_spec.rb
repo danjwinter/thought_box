@@ -21,7 +21,7 @@ RSpec.feature "User views links" do
       link.reload
 
       expect(link.read).to eq true
-      binding.pry
+
       within(".links") do
         expect(page).to have_content "Read: true"
         expect(page).to have_content "Mark as Unread"
