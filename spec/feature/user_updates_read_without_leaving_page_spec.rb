@@ -14,18 +14,18 @@ RSpec.feature "User views links" do
 
       within(".links") do
         expect(page).to have_content "Mark as Read"
-        expect(page).to have_css ".unread-link"
+        expect(page).to have_css ".unread"
         click_on "Mark as Read"
       end
 
       link.reload
 
       expect(link.read).to eq true
-
+      binding.pry
       within(".links") do
         expect(page).to have_content "Read: true"
         expect(page).to have_content "Mark as Unread"
-        expect(page).to have_css ".read-link"
+        expect(page).to have_css ".read"
         click_on "Mark as Unread"
       end
 

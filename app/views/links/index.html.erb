@@ -6,12 +6,23 @@
   <%= render partial: "form" %>
 </div>
 <br>
+<div class="search-box">
+  <%= form_tag('#') do %>
+    <%= label_tag(:search) %>
+    <%= text_field_tag(:search) %>
+  <% end %>
+</div>
+<br>
 <div class="links">
   <% @links.each do |link| %>
     <% if link.valid? %>
-      <div class="<%= link.read ? "read-link link-#{link.id}": "unread-link link-#{link.id}"%>">
-        Title: <%= link.title %>
-        URL: <%= link.url %>
+      <div class="link <%= link.read ? "read-link link-#{link.id}": "unread-link link-#{link.id}"%>">
+        <div class="title">
+          Title: <%= link.title %>
+        </div>
+        <div class="url">
+          URL: <%= link.url %>
+        </div>
         <div class="read-status" data-id="<%= link.id %>">
           Read: <%= link.read %>
         </div>
