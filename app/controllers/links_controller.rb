@@ -25,9 +25,11 @@ class LinksController < ApplicationController
   def update
     @link = current_user.links.find_by(id: params[:id])
 
-    @link.update_attributes(link_params)
-
-    redirect_to links_path
+    if @link.update_attributes(link_params)
+      redirect_to links_path
+    else
+      render :edit
+    end
   end
 
   def show
