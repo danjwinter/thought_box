@@ -7,8 +7,15 @@
 <br>
 <div class="links">
   <% @links.each do |link| %>
-    Title: <%= link.title %>
-    URL: <%= link.url %>
-    Read: <%= link.read %>
+    <% if link.valid? %>
+      Title: <%= link.title %>
+      URL: <%= link.url %>
+      Read: <%= link.read %>
+      <% if link.read %>
+        <%= link_to "Mark as Unread", link_path(link.id, link: {read: false}), method: :put %>
+      <% else %>
+        <%= link_to "Mark as Read", link_path(link.id, link: {read: true}), method: :put %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>

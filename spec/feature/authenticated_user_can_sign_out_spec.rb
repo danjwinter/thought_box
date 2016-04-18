@@ -4,7 +4,6 @@ RSpec.feature "Authenticated user can sign out", type: :feature do
   scenario "when they visit the root as Authenticated user, they can sign out" do
     user = create(:user)
 
-
     visit root_path
 
     fill_in "Email", with: "Gob@gmail.com"

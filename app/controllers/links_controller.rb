@@ -5,7 +5,7 @@ class LinksController < ApplicationController
 
   def index
     @link ||= Link.new
-    @links ||= current_user.links
+    @links = current_user.links
   end
 
   def create
@@ -18,6 +18,20 @@ class LinksController < ApplicationController
     end
   end
 
+  def edit
+    binding.pry
+    @link = current_user.links.find_by(id: params[:id])
+  end
+
+  def update
+    # binding.pry
+    @link = current_user.links.find_by(id: params[:id])
+
+    @link.update_attributes(link_params)
+
+    redirect_to links_path
+  end
+
   def show
     @link = current_user.links.find_by(id: params[:id])
   end
@@ -25,6 +39,6 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:link).permit(:title, :url)
+    params.require(:link).permit(:title, :url, :read)
   end
 end
