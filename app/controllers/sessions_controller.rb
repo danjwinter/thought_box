@@ -13,6 +13,10 @@ class SessionsController < ApplicationController
       flash[:error] = "Invalid login credentials. Nice Try Meeka and Steve."
       redirect_to login_path
     end
+  end
 
+  def destroy
+    session.clear
+    redirect_to login_path
   end
 end

@@ -24,4 +24,22 @@ RSpec.feature "Guest can log in or sign up", type: :feature do
 
     expect(current_path).to eq links_path
   end
+
+  scenario "they cannot create an account with a taken email" do
+    create(:user)
+    visit root_path
+
+    click_on "Sign up"
+
+    expect(current_path).to eq sign_up_path
+    expect(page).to have_content "Email"
+    expect(page).to have_content "Password"
+
+    fill_in "Email", with: "Gob@gmail.com"
+    fill_in "Password", with: "pass"
+    fill_in "Password confirmation", with: "pass"
+    click_on "Create Account"
+
+    expect(page).to have_content "Email has already been taken"
+  end
 end
