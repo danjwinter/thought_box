@@ -5,6 +5,21 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+
+def i_need_javascript
+  initial_driver = Capybara.current_driver
+  Capybara.current_driver = Capybara.javascript_driver
+  yield
+ensure
+  Capybara.current_driver = initial_driver
+end
+
+class ActiveRecord::Base
+  @@shared_connection = retrieve_connection
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
