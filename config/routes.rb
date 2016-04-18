@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   get "/sign_up", to: "users#new"
   resources :users, only: [:new, :create]
-  resources :links, only: [:index]
+  resources :links, only: [:index, :create, :show]
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 end

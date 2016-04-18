@@ -1,1 +1,14 @@
 <%= link_to "Sign Out", logout_path %>
+<div class="new-link">
+  <h2>Create New Link</h2>
+  <br><br>
+  <%= render partial: "form" %>
+</div>
+<br>
+<div class="links">
+  <% @links.each do |link| %>
+    Title: <%= link.title %>
+    URL: <%= link.url %>
+    Read: <%= link.read %>
+  <% end %>
+</div>

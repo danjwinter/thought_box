@@ -1,0 +1,13 @@
+<%= form_for @link, url: { action: "create"} do |f| %>
+<%= render partial: "shared/errors", locals: { target: @link } %>
+
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :url %>
+  <%= f.text_field :url, required: true %>
+  <br>
+  <%= f.submit "Create New Link" %>
+</div>
+<% end %>
