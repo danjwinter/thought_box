@@ -11,13 +11,13 @@ RSpec.feature "Guest can log in or sign up", type: :feature do
   scenario "they can create a new account" do
     visit root_path
 
-    click_on "Sign up now!"
+    click_on "Sign up"
 
     expect(current_path).to eq sign_up_path
-    expect(page).to have_content "Username"
+    expect(page).to have_content "Email"
     expect(page).to have_content "Password"
 
-    fill_in "Username", with: "Gob"
+    fill_in "Email", with: "Gob"
     fill_in "Password", with: "pass"
     fill_in "Password confirmation", with: "pass"
     click_on "Create Account"
