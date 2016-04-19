@@ -14,7 +14,7 @@ RSpec.feature "User views links" do
       click_on "Log in"
 
       page.find('.filter-by-read').click
-      # binding.pry
+
       expect(page).to have_selector("#link-#{google.id}", visible: true)
       expect(page).to have_selector("#link-#{yahoo.id}", visible: false)
 

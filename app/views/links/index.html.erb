@@ -27,8 +27,12 @@
 </button>
 
 <div class="links">
+  <ul>
+
+
   <% @links.each do |link| %>
     <% if link.valid? %>
+    <li>
       <div id="link-<%= link.id %>" class="link <%= link.read ? "read-link": "unread-link link-#{link.id}"%>">
         <div class="title">
           Title: <%= link.title %>
@@ -50,6 +54,8 @@
         <% end %>
         <%= link_to "Edit", edit_link_path(link.id) %>
       </div>
+    </li>
     <% end %>
   <% end %>
+</ul>
 </div>
