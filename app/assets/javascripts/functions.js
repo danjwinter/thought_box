@@ -39,6 +39,7 @@ searchForLink();
 filterByReadStatus();
 filterByUnReadStatus();
 showAll();
+sortAlphabetically();
 });
 
 var searchForLink = function(){
@@ -91,7 +92,17 @@ var showAll = function() {
     var links = $('.link');
 
     $.each(links, (index, link) => {
-      $(link).show()
+      $(link).show();
     });
+  });
+};
+
+var sortAlphabetically = function() {
+  $('.sort-alphabetically').on('click', (e) => {
+    var links = $('.link');
+    var alphaSortedLinks = links.sort((a, b) => {
+      return $(a).find(".title").text() > $(b).find(".title").text();
+    });
+    $('.links').html(alphaSortedLinks);
   });
 };
